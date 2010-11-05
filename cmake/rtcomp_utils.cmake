@@ -127,9 +127,6 @@ endmacro(GET_PKG_CONFIG_INFO)
 
 
 macro(GET_OS_INFO)
-    if(WIN32)
-        message(FATAL_ERROR "This component does not support Windows.")
-    endif(WIN32)
     string(REGEX MATCH "Linux" OS_IS_LINUX ${CMAKE_SYSTEM_NAME})
     if(OS_IS_LINUX)
         if(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86_64")
