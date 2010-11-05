@@ -1,0 +1,42 @@
+configuration.active_config: default
+
+conf.default.port_opts: type=serial,device=/dev/ttyACM0,timeout=1
+conf.default.start_angle: 0.0
+conf.default.end_angle: 0.0
+conf.default.cluster_count: 1
+conf.default.enable_intensity: 0
+conf.default.high_sensitivity: 0
+conf.default.pull_mode: 0
+conf.default.new_data_mode: 0
+conf.default.error_time: 5
+conf.default.x: 0.0
+conf.default.y: 0.0
+conf.default.z: 0.0
+conf.default.roll: 0.0
+conf.default.pitch: 0.0
+conf.default.yaw: 0.0
+
+conf.__widget__.port_opts: text
+conf.__widget__.start_angle: spin
+conf.__widget__.end_angle: spin
+conf.__widget__.cluster_count: spin
+conf.__widget__.enable_intensity: spin
+conf.__widget__.high_sensitivity: spin
+conf.__widget__.pull_mode: spin
+conf.__widget__.new_data_mode: spin
+conf.__widget__.error_time: spin
+conf.__widget__.x: spin
+conf.__widget__.y: spin
+conf.__widget__.z: spin
+conf.__widget__.roll: spin
+conf.__widget__.pitch: spin
+conf.__widget__.yaw: spin
+
+conf.__constraints__.cluster_count: 1<=x
+conf.__constraints__.enable_intensity: 0<=x<=1
+conf.__constraints__.enable_intensity: 0<=x<=1
+conf.__constraints__.high_sensitivity: 0<=x<=1
+conf.__constraints__.pull_mode: 0<=x<=1
+conf.__constraints__.new_data_mode: 0<=x<=1
+conf.__constraints__.error_time: 0<=x
+

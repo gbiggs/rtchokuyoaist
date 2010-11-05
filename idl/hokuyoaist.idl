@@ -1,0 +1,32 @@
+/* RTC:HokuyoAist
+ *
+ * Copyright (C) 2009-2010
+ *     Geoffrey Biggs
+ *     RT-Synthesis Research Group
+ *     Intelligent Systems Research Institute,
+ *     National Institute of Advanced Industrial Science and Technology (AIST),
+ *     Japan
+ *     All rights reserved.
+ * Licensed under the Eclipse Public License -v 1.0 (EPL)
+ * http://www.opensource.org/licenses/eclipse-1.0.txt
+ *
+ * The RTC:HokuyoAist-specific interface.
+ */
+
+
+#ifndef HOKUYOAIST_IDL
+#define HOKUYOAIST_IDL
+
+module Hokuyo_Aist
+{
+
+interface HokuyoAist
+{
+    /// Request a scan from the laser when in pull mode.
+    void request_scan();
+};
+
+}; // module HokuyoAist
+
+#endif // HOKUYOAIST_IDL
+
