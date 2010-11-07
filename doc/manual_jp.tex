@@ -34,38 +34,37 @@ geoffrey.biggs@aist.go.jp}
 
 \maketitle
 
-\section{Introduction}
+\section{はじめに}
 \label{sec:intro}
 
-RTC:HokuyoAistはOpenRTM-aist用のRTコンポーネントです。北洋電気のレーザーセンサーのドライバを
-提供します。Gearbox\footnote{http://gearbox.sourceforge.net/}からのhokuyo\_aistライブラリをラップします。URG-04LX（Classic-URG）、
+RTC:HokuyoAistはOpenRTM-aist用のRTコンポーネントです。北洋電機株式会社製のレーザーセンサーのドライバを
+提供します。Gearbox\footnote{http://gearbox.sourceforge.net/}で提供されているhokuyo\_aistライブラリをラップしてます。URG-04LX（Classic-URG）、
 UGH-08LX（Hi-URG）、UTM-30LX（Top-URG）、UXM-30LX（Tough-URG）及びUXM-30LX-Eを
 含むレーザーセンサーの、すべての現在のモデルで機能します。
 
-コンポーネントが活性化されるまで、レーザーは起動しません。その後、コンポーネントがプルモードである
-ようには構成されなければ、レーザーは起動します。機動時、レーザーの内部クロックがコミュニケーション
-遅れを含むコンピューターのクロックに測定されます。データのタイムスタンプはこの測定された時間を
-使用して計算されます。したがって、測定はデータのユーザによって必要ではありません。
+RTC:HokuyoAistのコンポーネントが活性化されるまで、レーザーは起動しません。
+その後、コンポーネントがpullモードではない構成の場合、レーザーを起動できます。起動時に、レーザーの内部
+クロックは、コンピューターのクロック（コミュニケーション遅れを含む）で測定されます。
+データのタイムスタンプはこの測定された時間を使用して計算されます。
+したがって、ユーザーはデータの測定を行う必要はありません。
 
-このソフトウェアは産業技術総合研究所で開発されています。承認番号はH22PRO-1194です。
-開発は新エネルギー・産業技術総合開発機構（Project for Strategic Development of Advanced
-Robotics Elemental Technologies）に支えられました。このソフトウェアは
-Eclipse Public License -v 1.0 (EPL)でライセンスされています。LICENSE.txtを
-参照してください。
+このソフトウェアは新エネルギー・産業技術総合開発機構（NEDO)の支援により、産業技術総合研究所で開発されて
+います。承認番号はH22PRO-1167です。
+このソフトウェアはEclipse Public License -v 1.0 (EPL)ライセンスとして公開されてます。LICENSE.txtを参照してください。
 
 \section{条件}
 \label{sec:requirements}
 
-RTC:HokuyoAistはGearboxからのhokuyo\_aistライブラリを使います。バージョン2.0.0以上が必要
+RTC:HokuyoAistはGearboxが提供しているhokuyo\_aistライブラリを使います。バージョン2.0.0以上が必要
 です\footnote{Gearbox 10.11にあります。}。
 このライブラリはWindows用のインストーラに含まれています。
 
-RTC:HokuyoAistははOpenRTM-aistのC++版が必要です。
+RTC:HokuyoAistはOpenRTM-aistのC++版が必要です。
 
-RTC:StageはCMake\footnote{http://www.cmake.org/}を使います。Cmake
-2.6以上は必要です。
+RTC:StageはCMake\footnote{http://www.cmake.org/}を使います。CMake
+2.6以上が必要です。
 
-RTC:HokuyoAistはWindows、Linux及びMacOS Xに使うことができます。レーザーとの
+RTC:HokuyoAistはWindows、Linux及びMacOS Xで使うことができます。レーザーとの
 コミュニケーションはGearboxの「flexiport」というライブラリを使います。このライブラリを
 インストールしなければなりません。このライブラリはWindows用のインストーラに含まれています。
 
@@ -74,25 +73,25 @@ RTC:HokuyoAistはWindows、Linux及びMacOS Xに使うことができます。�
 
 \subsection{インストーラ}
 
-Windowsのユーザはインストーラペケージを使用してコンポーネントをインストールすることができます。
+Windowsのユーザはインストーラパッケージを使用してコンポーネントをインストールすることができます。
 これはコンポーネント及びそのすべての必要なライブラリをインストールします。Windowsでインストール
-の推奨の方法です。
+する場合、インストーラの使用を推奨してます。
 
 \begin{enumerate}
   \item インストーラをダウンロードしてください。
   \item インストールを始めるためにインストーラをダブルクリックしてください。
-  \item コンポーネントをインストールする指示にしたがってください。
-  \item 環境変数変更がコンポーネントを使用する前に効果を現わすためにコンピューターを再起動する
+  \item 指示にしたがってコンポーネントをインストールしてください。
+  \item 環境変数の変更を適用するため、コンポーネントを使用する前にコンピューターを再起動する
 必要があるかもしれません。
 \end{enumerate}
 
 RTC:HokuyoAistは\verb|rtchokuyoaist_standalone|の実行をダブルクリックして実行することが
-できます。あるいは、\verb|rtc_hokuyoaist|は初期化関数の\verb|rtc_init|を利用して、
+できます。あるいは、\verb|rtc_hokuyoaist|を初期化関数の\verb|rtc_init|を利用して、
 マネージャにロードすることができます。
 
 \subsection{ソースから}
 
-ソースを使う場合は以下の手続きでインストールしてください。
+ソースを使う場合は以下の手順でインストールしてください。
 
 \begin{enumerate}
   \item ソースをダウンロードして解凍してください。
@@ -110,34 +109,34 @@ RTC:HokuyoAistは\verb|rtchokuyoaist_standalone|の実行をダブルクリッ�
   \item CMakeを実行してください。
 
   \verb|cmake ../|
-  \item エラーはなかったら、makeを実行してください。
+  \item エラーが出無い場合、makeを実行してください。
 
   \verb|make|
   \item make
   installでコンポーネントをインストールしてください。選択されたインストール
-  場所の許可はあるかを確認してください。
+  場所に書き込み権限があるかを確認してください。
 
   \verb|make install|
   \item
-  インストールする場所はccmakeを実効して\verb|CMAKE_INSTALL_PREFIX|を
-  設定したら変更することは可能です。
+  インストールする場所はccmakeを実行して\verb|CMAKE_INSTALL_PREFIX|を
+  設定することで変更が可能です。
 
   \verb|ccmake ../|
 \end{enumerate}
 
-コンポーネントを使える用になりました。コンフィグレーションは次のセクションに
+ここまでで、コンポーネントが使えるようになりました。コンフィグレーションは次のセクションを
 参照してください。
 
-RTC:は\verb|rtchokuyoaist_standalone|の実行（\verb|${prefix}/bin|に
-インストールされました）によりスタンドアローンモードで実行 することができます。
-あるいは、\verb|librtchokuyoaist.so|は初期化関数の\verb|rtc_init|を利用して、
+RTC:HokuyoAistは\verb|rtchokuyoaist_standalone|を実行（\verb|${prefix}/bin|に
+インストールされます）することでスタンドアローンモードで実行することができます。
+あるいは、\verb|librtchokuyoaist.so|を初期化関数の\verb|rtc_init|を利用して、
 マネージャにロードすることができます。このライブラリは\verb|${prefix}/lib|
 または\verb|${prefix}/lib64|にインストールされます。
 
 \section{コンフィグレーション}
 \label{sec:configuration}
 
-使えるコンフィグレーションパラメータはテーブル~\ref{tab:config_params}に参照
+使えるコンフィグレーションパラメータはテーブル~\ref{tab:config_params}を参照
 してください。
 
 \begin{table}[t]
@@ -146,31 +145,31 @@ RTC:は\verb|rtchokuyoaist_standalone|の実行（\verb|${prefix}/bin|に
     \toprule
     パラメータ & 意味 \\
     \midrule
-    port\_opts & レーザーにポートを開くために使用されるオプションを変更します。詳細についてはflexiportの説明書を参照してください。 \\
-    start\_angle & スキャンし始める角度です。ラジアンで指定してください。全スキャンのためにデフォルトで始めるために0に設定してください。 \\
-    end\_angle & スキャンしやめる角度です。ラジアンで指定してください。全スキャンのためにデフォルトでやめるために0に設定してください。 \\
+    port\_opts & レーザーのためのポートを開くために使用されるオプションを変更します。詳細についてはflexiportの説明書を参照してください。 \\
+    start\_angle & スキャン開始角度です。ラジアンで指定してください。全スキャンのためにデフォルトでは0に設定してください。 \\
+    end\_angle & スキャン終了角度です。ラジアンで指定してください。全スキャンのためにデフォルトでは0に設定してください。 \\
     cluster\_count & クラスタサイズです。デフォルトは１です。 \\
     enable\_intensity & Trueに設定された場合、インテンシティデータも送られます。 \\
-    high\_sensitivity & いくつかのモデルは高感度モードを特色します。それを可能にするためにこのパラメータを設定してください。 \\
-    pull\_mode & プルモードに変わります。サービスポートを通ってスキャンを要求必要になります。 \\
-    new\_data\_mode & Trueに設定された場合、毎スキャンは新しいデータを要求します。そうではなければ、最も最新のデータが送られます。 \\
-    error\_time & 数秒におけるエラー間の最小の時間です。エラーがこの値より接近してともに生じれば、コンポーネントはエラーに移動します。そうでなければ、レーザーをリセットし、継続することを試みます。 \\
+    high\_sensitivity & いくつかのモデルは高感度モードをサポートします。それを可能にするためにこのパラメータを設定してください。 \\
+    pull\_mode & pullモードに変わります。サービスポートを通ってスキャンの要求が必要になります。 \\
+    new\_data\_mode & Trueに設定された場合、毎回のスキャンで新しいデータを要求します。そうではなければ、最も最新のデータが送られます。 \\
+    error\_time & エラー間の最小の時間(秒)です。エラーがこの値より小さい間隔で生じた場合、コンポーネントはエラーに遷移します。そうでなければ、レーザーをリセットし、継続することを試みます。 \\
     x, y, z & レーザーの3次元位置です。 \\
     roll, pitch, yaw & レーザーの3次元角度です。 \\
     \bottomrule
   \end{tabularx}
-  \caption{Available configuration parameters.}
+  \caption{コンフィグレーションパラメータ。}
   \label{tab:config_params}
 \end{table}
 
 \section{ポート}
 \label{sec:port}
 
-コンポーネントによって提供されるポートはテーブル~\ref{tab:ports}に述べられています。
+コンポーネントによって提供されるポートはテーブル~\ref{tab:ports}で述べられています。
 
-北洋電気のレーザープロトコルは、20未満の値を使用して、データ内でエラーを報告します。
-コンポーネントはこれらの値を0ｍに取り替えます。データを処理する場合、未知のこととしてゼロの値を
-すべて考慮してください。
+北洋電機のレーザープロトコルは、20未満の値を使用して、データ内でエラーを報告します。
+コンポーネントはこれらの値を0ｍに取り替えます。データを処理する場合、unknownとして全てゼロの値を
+考慮してください。
 
 \begin{table}[t]
   \centering
@@ -179,7 +178,7 @@ RTC:は\verb|rtchokuyoaist_standalone|の実行（\verb|${prefix}/bin|に
     ポート名 & ポート型 & データ型 & 意味 \\
     \midrule
     ranges & OutPort & RTC::RangeData & レンジデータ \\
-    intensities & OutPort & RTC::IntensityData & インテンシティデータ。インテンシティデータが可能になる場合利用のみです。 \\
+    intensities & OutPort & RTC::IntensityData & インテンシティデータ。インテンシティデータが可能になる場合のみ利用可能です。 \\
     ranger & Service & Ranger & RTC:Rangerインターフェースを提供しているサービスポートです。 \\
     & & HokuyoAist & HokuyoAistインターフェースを提供しているサービスポートです。 \\
     \bottomrule
@@ -205,3 +204,4 @@ RTC:は\verb|rtchokuyoaist_standalone|の実行（\verb|${prefix}/bin|に
 \end{Japanese}
 \end{CJK}
 \end{document}
+
