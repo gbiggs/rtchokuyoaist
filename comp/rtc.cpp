@@ -347,10 +347,10 @@ void RTC_HokuyoAist::write_scan()
     {
         intensities_.tm.sec = scan_data_.system_time_stamp() / 1000000000;
         intensities_.tm.nsec = scan_data_.system_time_stamp() % 1000000000;
-        intensities_.ranges.length(scan_data_.intensities_length());
+        intensities_.intensities.length(scan_data_.intensities_length());
         for(unsigned int ii = 0; ii < scan_data_.intensities_length(); ii++)
         {
-            intensities_.ranges[ii] = scan_data_.intensities()[ii];
+            intensities_.intensities[ii] = scan_data_.intensities()[ii];
         }
         intensities_.geometry = sensor_geom_;
         intensities_.config = sensor_config_;
