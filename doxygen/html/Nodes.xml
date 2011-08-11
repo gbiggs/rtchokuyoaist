@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DocSetNodes version="1.0">
+  <TOC>
+    <Node>
+      <Name>Root</Name>
+      <Path>index.html</Path>
+      <Subnodes>
+       <Node>
+        <Name>Class List</Name>
+        <Path>annotated.html</Path>
+        <Subnodes>
+         <Node>
+          <Name>RTCHokuyoAist::HokuyoAistProvider</Name>
+          <Path>class_r_t_c_hokuyo_aist_1_1_hokuyo_aist_provider.html</Path>
+         </Node>
+         <Node>
+          <Name>RTCHokuyoAist::RangerProvider</Name>
+          <Path>class_r_t_c_hokuyo_aist_1_1_ranger_provider.html</Path>
+         </Node>
+         <Node>
+          <Name>RTCHokuyoAIST</Name>
+          <Path>class_r_t_c_hokuyo_a_i_s_t.html</Path>
+         </Node>
+        </Subnodes>
+       </Node>
+       <Node>
+        <Name>Class Index</Name>
+        <Path>classes.html</Path>
+       </Node>
+       <Node>
+        <Name>Class Members</Name>
+        <Path>functions.html</Path>
+       </Node>
+       <Node>
+        <Name>Namespace List</Name>
+        <Path>namespaces.html</Path>
+        <Subnodes>
+         <Node>
+          <Name>RTCHokuyoAist</Name>
+          <Path>namespace_r_t_c_hokuyo_aist.html</Path>
+         </Node>
+        </Subnodes>
+       </Node>
+       <Node>
+        <Name>File List</Name>
+        <Path>files.html</Path>
+        <Subnodes>
+         <Node>
+          <Name>/home/geoff/research/src/rtm/rtchokuyoaist/include/rtchokuyoaist/hokuyoaist_impl.h</Name>
+          <Path>hokuyoaist__impl_8h.html</Path>
+         </Node>
+         <Node>
+          <Name>/home/geoff/research/src/rtm/rtchokuyoaist/include/rtchokuyoaist/ranger_impl.h</Name>
+          <Path>ranger__impl_8h.html</Path>
+         </Node>
+         <Node>
+          <Name>/home/geoff/research/src/rtm/rtchokuyoaist/include/rtchokuyoaist/rtc.h</Name>
+          <Path>rtc_8h.html</Path>
+         </Node>
+        </Subnodes>
+       </Node>
+       <Node>
+        <Name>Directories</Name>
+        <Path>dirs.html</Path>
+        <Subnodes>
+         <Node>
+          <Name>include</Name>
+          <Path>dir_c0c5678643bef79f0aab4df0a91a6119.html</Path>
+          <Subnodes>
+           <Node>
+            <Name>rtchokuyoaist</Name>
+            <Path>dir_b837a81565cf764564927673ee1a5cfc.html</Path>
+            <Subnodes>
+            </Subnodes>
+           </Node>
+          </Subnodes>
+         </Node>
+        </Subnodes>
+       </Node>
+       <Node>
+        <Name>File Members</Name>
+        <Path>globals.html</Path>
+       </Node>
+      </Subnodes>
+    </Node>
+  </TOC>
+</DocSetNodes>

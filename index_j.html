@@ -1,0 +1,332 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>RTC:HokuyoAIST - 日本語 &mdash; RTCHokuyoAIST v2.0.0 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/breathe.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '2.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="RTCHokuyoAIST v2.0.0 documentation" href="index.html" />
+    <link rel="prev" title="RTC:HokuyoAIST - English" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="index.html" title="RTC:HokuyoAIST - English"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">RTCHokuyoAIST v2.0.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="rtc-hokuyoaist">
+<h1>RTC:HokuyoAIST - 日本語<a class="headerlink" href="#rtc-hokuyoaist" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="id1">
+<h1>はじめに<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>RTC:HokuyoAISTはOpenRTM-aist用のRTコンポーネントです。北陽電機株式会社製の
+レーザーセンサーのドライバを提供します。 <a class="reference external" href="https://www.github.com/gbiggs/hokuyoaist">HokuyoAISTライブラリ</a> をラップしてます。
+URG-04LX（Classic-URG）、 UGH-08LX（Hi-URG）、UTM-30LX（Top-URG）、UXM-30LX
+（Tough-URG）及びUXM-30LX-Eを含むレーザーセンサーの、すべての現在のモデルで
+機能します。</p>
+<p>RTC:HokuyoAISTのコンポーネントが活性化されるまで、レーザーは起動しません。
+その後、コンポーネントがpullモードではない構成の場合、レーザーを起動できます。
+起動時に、レーザーの内部クロックは、コンピューターのクロック（コミュニケーション
+遅れを含む）で測定されます。データのタイムスタンプはこの測定された時間を使用して
+計算されます。したがって、ユーザーはデータの測定を行う必要はありません。</p>
+<p>クラスについては、 <a class="reference external" href="doxygen/html/index.html">APIドキュメンテーション</a> に参照してください。</p>
+</div>
+<div class="section" id="id2">
+<h1>条件<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h1>
+<p>RTC:HokuyoAISTは <a class="reference external" href="https://www.github.com/gbiggs/hokuyoaist">HokuyoAISTライブラリ</a> を使います。バージョン3.0.0以上が必要
+です。このライブラリはWindows用のインストーラに含まれています。</p>
+<p>RTC:HokuyoAISTはOpenRTM-aist 1.0.0以上のC++版が必要です。</p>
+<p>RTC:HokuyoAISTは <a class="reference external" href="http://www.cmake.org">CMake</a> を使います。CMake 2.8以上が必要です。</p>
+<p>RTC:HokuyoAISTはWindows、Linux及びMacOS Xで使うことができます。レーザーとの
+コミュニケーションは「 <a class="reference external" href="https://www.github.com/gbiggs/flexiport">Flexiport</a> 」というライブラリを使います。このライブラリを
+インストールしなければなりません。このライブラリはWindows用のインストーラに
+含まれています。</p>
+</div>
+<div class="section" id="id4">
+<h1>インストール<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id5">
+<h2>インストーラ<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>Windowsのユーザはインストーラパッケージを使用してコンポーネントをインストール
+することができます。これはコンポーネント及びそのすべての必要なライブラリを
+インストールします。Windowsでインストールする場合、インストーラの使用を推奨してます。</p>
+<ul class="simple">
+<li>インストーラをダウンロードしてください。</li>
+<li>インストールを始めるためにインストーラをダブルクリックしてください。</li>
+<li>指示にしたがってコンポーネントをインストールしてください。</li>
+<li>環境変数の変更を適用するため、コンポーネントを使用する前にコンピューターを
+再起動する必要があるかもしれません。</li>
+</ul>
+<p>RTC:HokuyoAISTは <tt class="docutils literal"><span class="pre">rtchokuyoaist_standalone</span></tt> の実行をダブルクリックして実行することが
+できます。あるいは、 <tt class="docutils literal"><span class="pre">rtc_hokuyoaist</span></tt> を初期化関数の <tt class="docutils literal"><span class="pre">rtc_init</span></tt> を利用して、
+マネージャにロードすることができます。</p>
+</div>
+<div class="section" id="id6">
+<h2>ソースから<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>ソースを使う場合は以下の手順でインストールしてください。</p>
+<ul>
+<li><p class="first">ソースをダウンロードして解凍してください:</p>
+<div class="highlight-python"><pre>tar -xvzf rtchokuyoaist-2.0.0.tar.gz</pre>
+</div>
+</li>
+<li><p class="first">解凍されたフォルダに入ってください:</p>
+<div class="highlight-python"><pre>cd rtchokuyoaist-2.0.0</pre>
+</div>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">build</span></tt> フォルダを作ってください:</p>
+<div class="highlight-python"><pre>mkdir build</pre>
+</div>
+</li>
+<li><p class="first">`` build`` フォルダに入ってください:</p>
+<div class="highlight-python"><pre>cd build</pre>
+</div>
+</li>
+<li><p class="first">CMakeを実行してください:</p>
+<div class="highlight-python"><pre>cmake ../</pre>
+</div>
+</li>
+<li><p class="first">エラーが出無い場合、makeを実行してください:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">make</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">make</span> <span class="pre">install</span></tt> でコンポーネントをインストールしてください。選択された
+インストール場所に書き込み権限があるかを確認してください:</p>
+<div class="highlight-python"><pre>``make install``</pre>
+</div>
+</li>
+<li><p class="first">インストールする場所はccmakeを実行して <tt class="docutils literal"><span class="pre">CMAKE_INSTALL_PREFIX</span></tt> を
+設定することで変更が可能です。</p>
+<blockquote>
+<div><p>ccmake ../</p>
+</div></blockquote>
+</li>
+</ul>
+<p>ここまでで、コンポーネントが使えるようになりました。コンフィグレーションは次のセクションを
+参照してください。</p>
+<p>RTC:HokuyoAISTは <tt class="docutils literal"><span class="pre">rtchokuyoaist_standalone</span></tt> を実行（ <tt class="docutils literal"><span class="pre">${prefix}/bin</span></tt> に
+インストールされます）することでスタンドアローンモードで実行することができます。
+あるいは、 <tt class="docutils literal"><span class="pre">librtchokuyoaist.so</span></tt> を初期化関数の <tt class="docutils literal"><span class="pre">rtc_init</span></tt> を利用して、
+マネージャにロードすることができます。このライブラリは <tt class="docutils literal"><span class="pre">${prefix}/lib</span></tt>
+または <tt class="docutils literal"><span class="pre">${prefix}/lib64</span></tt> にインストールされます。</p>
+</div>
+</div>
+<div class="section" id="id7">
+<h1>コンフィグレーション<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h1>
+<p>使えるコンフィグレーションパラメータは以下のテーブルを参照
+してください。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="91%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">パラメータ</th>
+<th class="head">意味</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>port_opts</td>
+<td>レーザーのためのポートを開くために使用されるオプションを変更します。詳細についてはflexiportの説明書を参照してください。</td>
+</tr>
+<tr><td>start_angle</td>
+<td>スキャン開始角度です。ラジアンで指定してください。全スキャンのためにデフォルトでは0に設定してください。</td>
+</tr>
+<tr><td>end_angle</td>
+<td>スキャン終了角度です。ラジアンで指定してください。全スキャンのためにデフォルトでは0に設定してください。</td>
+</tr>
+<tr><td>cluster_count</td>
+<td>クラスタサイズです。デフォルトは１です。</td>
+</tr>
+<tr><td>enable_intensity</td>
+<td>Trueに設定された場合、インテンシティデータも送られます。</td>
+</tr>
+<tr><td>high_sensitivity</td>
+<td>いくつかのモデルは高感度モードをサポートします。それを可能にするためにこのパラメータを設定してください。</td>
+</tr>
+<tr><td>pull_mode</td>
+<td>pullモードに変わります。サービスポートを通ってスキャンの要求が必要になります。</td>
+</tr>
+<tr><td>new_data_mode</td>
+<td>Trueに設定された場合、毎回のスキャンで新しいデータを要求します。そうではなければ、最も最新のデータが送られます。</td>
+</tr>
+<tr><td>error_time</td>
+<td>エラー間の最小の時間(秒)です。エラーがこの値より小さい間隔で生じた場合、コンポーネントはエラーに遷移します。そうでなければ、レーザーをリセットし、継続することを試みます。</td>
+</tr>
+<tr><td>x, y, z</td>
+<td>レーザーの3次元位置です。</td>
+</tr>
+<tr><td>roll, pitch, yaw</td>
+<td>レーザーの3次元角度です。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id8">
+<h1>ポート<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h1>
+<p>コンポーネントによって提供されるポートは以下のテーブルで述べられています。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="7%" />
+<col width="16%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">ポート名</th>
+<th class="head">ポート型</th>
+<th class="head">データ型</th>
+<th class="head">意味</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>ranges</td>
+<td>OutPort</td>
+<td>RTC::RangeData</td>
+<td>レンジデータ</td>
+</tr>
+<tr><td>intensities</td>
+<td>OutPort</td>
+<td>RTC::IntensityData</td>
+<td>インテンシティデータ。インテンシティデータが可能になる場合のみ利用可能です。</td>
+</tr>
+<tr><td>ranger</td>
+<td>Service</td>
+<td>Ranger
+HokuyoAist</td>
+<td>RTC:Rangerインターフェースを提供しているサービスポートです。
+HokuyoAistインターフェースを提供しているサービスポートです。</td>
+</tr>
+</tbody>
+</table>
+<p>北洋電機のレーザープロトコルは、20未満の値を使用して、データ内でエラーを報告します。
+コンポーネントはこれらの値を0ｍに取り替えます。データを処理する場合、
+unknownとして全てゼロの値を考慮してください。</p>
+</div>
+<div class="section" id="id9">
+<h1>例<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h1>
+<p>例のrtc.confファイルは <tt class="docutils literal"><span class="pre">${prefix}/share/rtc_hokuyoaist/examples/conf/</span></tt>
+フォルダにインストールされています。</p>
+</div>
+<div class="section" id="changelog">
+<h1>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id10">
+<h2>3.0<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Change to using standalone HokuyoAIST library from Github.</li>
+</ul>
+</div>
+<div class="section" id="id11">
+<h2>2.0<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Support hokuyo_aist library v2 API.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="license">
+<h1>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h1>
+<p>このソフトウェアは産業技術総合研究所で開発されています。承認番号はH23PRO-????
+です。このソフトウェアは Lesser General Public License (LGPL) ライセンスとして
+公開されてます。COPYING.LESSER を参照してください。</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">RTC:HokuyoAIST - 日本語</a></li>
+<li><a class="reference internal" href="#id1">はじめに</a></li>
+<li><a class="reference internal" href="#id2">条件</a></li>
+<li><a class="reference internal" href="#id4">インストール</a><ul>
+<li><a class="reference internal" href="#id5">インストーラ</a></li>
+<li><a class="reference internal" href="#id6">ソースから</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id7">コンフィグレーション</a></li>
+<li><a class="reference internal" href="#id8">ポート</a></li>
+<li><a class="reference internal" href="#id9">例</a></li>
+<li><a class="reference internal" href="#changelog">Changelog</a><ul>
+<li><a class="reference internal" href="#id10">3.0</a></li>
+<li><a class="reference internal" href="#id11">2.0</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#license">License</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">RTC:HokuyoAIST - English</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/index_j.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="index.html" title="RTC:HokuyoAIST - English"
+             >previous</a> |</li>
+        <li><a href="index.html">RTCHokuyoAIST v2.0.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010-2011, Geoffrey Biggs.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>
