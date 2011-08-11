@@ -1,14 +1,12 @@
-cmake_minimum_required(VERSION 2.6 FATAL_ERROR)
+cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 
 project(RTCHokuyoAist)
 string(TOLOWER ${PROJECT_NAME} PROJECT_NAME_LOWER)
-
 include(${PROJECT_SOURCE_DIR}/cmake/rtcomp_utils.cmake)
-
-# Set version and OS-specific settings
-set(RTC_VERSION 2.0.0 CACHE STRING "RTC:HokuyoAist version")
+set(PROJECT_VERSION 3.0.0 CACHE STRING "RTCHokuyoAIST version")
 DISSECT_VERSION()
-GET_OS_INFO()
+set(PROJECT_DESCRIPTION "RT-Component for Hokuyo range sensors")
+set(PROJECT_VENDOR "AIST")
 
 # Add an "uninstall" target
 CONFIGURE_FILE ("${PROJECT_SOURCE_DIR}/cmake/uninstall_target.cmake.in"
@@ -16,71 +14,48 @@ CONFIGURE_FILE ("${PROJECT_SOURCE_DIR}/cmake/uninstall_target.cmake.in"
 ADD_CUSTOM_TARGET (uninstall "${CMAKE_COMMAND}" -P
     "${PROJECT_BINARY_DIR}/uninstall_target.cmake")
 
-# Component source files
-set(comp_srcs comp/rtc.cpp
-              comp/ranger_impl.cpp
-              comp/hokuyoaist_impl.cpp)
-set(standalone_srcs comp/standalone.cpp)
-set(idls ranger
-         hokuyoaist)
+option(BUILD_EXAMPLES "Build and install examples" ON)
+option(BUILD_DOCUMENTATION "Build the documentation" ON)
 
-# Compile the built-in IDL files
-COMPILE_IDL_FILES(${PROJECT_SOURCE_DIR}/idl ${idls})
-FILTER_LIST("${_idl_srcs}" "hh$" _installable_idl_srcs)
-install(FILES ${_installable_idl_srcs}
-    DESTINATION ${RTC_INCLUDE_INSTALL_DIR}/idl COMPONENT headers)
+option(STATIC_LIBS "Build static libraries" OFF)
+if(STATIC_LIBS)
+    set(LIB_TYPE STATIC)
+else(STATIC_LIBS)
+    set(LIB_TYPE SHARED)
+endif(STATIC_LIBS)
+
+# Set up installation directories
+set(BIN_INSTALL_DIR "bin")
+set(LIB_INSTALL_DIR "lib")
+set(INC_INSTALL_DIR
+    "include/${PROJECT_NAME_LOWER}-${PROJECT_VERSION_MAJOR}")
+set(SHARE_INSTALL_DIR
+    "share/${PROJECT_NAME_LOWER}-${PROJECT_VERSION_MAJOR}")
 
 # Get necessary dependency information
-GET_PKG_CONFIG_INFO(openrtm-aist REQUIRED)
-GET_PKG_CONFIG_INFO(hokuyo_aist REQUIRED >=2.0.0)
-
-# Component target
-include_directories(${PROJECT_SOURCE_DIR} ${PROJECT_BINARY_DIR})
-if(openrtm-aist_INCLUDE_DIRS OR hokuyo_aist_INCLUDE_DIRS)
-    include_directories(${openrtm-aist_INCLUDE_DIRS}
-        ${hokuyo_aist_INCLUDE_DIRS})
-endif(openrtm-aist_INCLUDE_DIRS OR hokuyo_aist_INCLUDE_DIRS)
-if(openrtm-aist_LIBRARY_DIRS OR hokuyo_aist_LIBRARY_DIRS)
-    link_directories(${openrtm-aist_LIBRARY_DIRS}
-        ${hokuyo_aist_LIBRARY_DIRS})
-endif(openrtm-aist_LIBRARY_DIRS OR hokuyo_aist_LIBRARY_DIRS)
-if(openrtm-aist_CFLAGS OR hokuyo_aist_CFLAGS)
-    set_source_files_properties(${comp_srcs} ${proxy_srcs}
-        PROPERTIES COMPILE_FLAGS
-        "${openrtm-aist_CFLAGS} ${hokuyo_aist_CFLAGS}")
-endif(openrtm-aist_CFLAGS OR hokuyo_aist_CFLAGS)
-
-add_library(rtc_hokuyoaist SHARED ${comp_srcs} ${proxy_srcs} ${_idl_srcs})
-add_executable(rtc_hokuyoaist_standalone ${standalone_srcs})
-
-target_link_libraries(rtc_hokuyoaist_standalone rtc_hokuyoaist)
-if(openrtm-aist_LINK_FLAGS OR hokuyo_aist_LINK_FLAGS)
-    set_target_properties(rtc_hokuyoaist PROPERTIES LINK_FLAGS
-        "${openrtm-aist_LINK_FLAGS} ${hokuyo_aist_LINK_FLAGS}")
-endif(openrtm-aist_LINK_FLAGS OR hokuyo_aist_LINK_FLAGS)
-if(openrtm-aist_LINK_LIBS OR hokuyo_aist_LINK_LIBS)
-    target_link_libraries(rtc_hokuyoaist ${openrtm-aist_LINK_LIBS}
-        ${hokuyo_aist_LINK_LIBS})
-endif(openrtm-aist_LINK_LIBS OR hokuyo_aist_LINK_LIBS)
-
-install(TARGETS rtc_hokuyoaist LIBRARY DESTINATION ${RTC_LIB_INSTALL_DIR}
-    COMPONENT component)
-install(TARGETS rtc_hokuyoaist_standalone RUNTIME DESTINATION bin
-    COMPONENT component)
+list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/Modules)
+find_package(OpenRTM 1 REQUIRED)
+find_package(HokuyoAIST 3 REQUIRED)
 
 # Subdirectories
 add_subdirectory(cmake)
-add_subdirectory(doc)
-add_subdirectory(examples)
+if(BUILD_DOCUMENTATION)
+    add_subdirectory(doc)
+endif(BUILD_DOCUMENTATION)
+if(BUILD_EXAMPLES)
+    add_subdirectory(examples)
+endif(BUILD_EXAMPLES)
 add_subdirectory(idl)
+add_subdirectory(include)
+add_subdirectory(src)
 
 # Package creation
 include(InstallRequiredSystemLibraries)
-set(RTC_DESCRIPTION "RT-Component for Hokuyo laser scanners.")
-set(RTC_VENDOR "Geoffrey Biggs, AIST")
-set(RTC_EXECUTABLES "rtc_hokuyoaist_standalone" "RTC:HokuyoAist")
+set(PROJECT_EXECUTABLES ${PROJECT_NAME_LOWER}_standalone
+    "RTC:HokuyoAIST_standalone")
+set(cpack_options "${PROJECT_BINARY_DIR}/cpack_options.cmake")
 configure_file("${PROJECT_SOURCE_DIR}/cmake/cpack_options.cmake.in"
-    "${PROJECT_BINARY_DIR}/cpack_options.cmake" @ONLY)
-set(CPACK_PROJECT_CONFIG_FILE "${PROJECT_BINARY_DIR}/cpack_options.cmake")
+    ${cpack_options} @ONLY)
+set(CPACK_PROJECT_CONFIG_FILE ${cpack_options})
 include(CPack)
 

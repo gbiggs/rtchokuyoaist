@@ -14,8 +14,8 @@
  */
 
 
-#include "comp/ranger_impl.h"
-#include "comp/rtc.h"
+#include <rtchokuyoaist/ranger_impl.h>
+#include <rtchokuyoaist/rtc.h>
 
 using namespace RTCHokuyoAist;
 

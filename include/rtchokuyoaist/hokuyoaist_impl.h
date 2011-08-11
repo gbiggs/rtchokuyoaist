@@ -18,7 +18,7 @@
 
 #include "idl/hokuyoaist.hh"
 
-class RTC_HokuyoAist;
+class RTCHokuyoAIST;
 
 namespace RTCHokuyoAist
 {
@@ -31,12 +31,12 @@ class HokuyoAistProvider
         HokuyoAistProvider();
         virtual ~HokuyoAistProvider();
 
-        void setup(RTC_HokuyoAist* owner) { owner_ = owner; }
+        void setup(RTCHokuyoAIST* owner) { owner_ = owner; }
 
         void request_scan() throw (CORBA::SystemException);
 
     private:
-        RTC_HokuyoAist* owner_;
+        RTCHokuyoAIST* owner_;
 }; // class HokuyoAistProvider
 
 }; // namespace RTCHokuyoAist

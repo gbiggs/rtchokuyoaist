@@ -1,6 +1,6 @@
-/* RTC:HokuyoAist
+/* RTC:HokuyoAIST
  *
- * Copyright (C) 2010
+ * Copyright (C) 2010-2011
  *     Geoffrey Biggs
  *     RT-Synthesis Research Group
  *     Intelligent Systems Research Institute,
@@ -17,7 +17,7 @@
 #ifndef RTC_H__
 #define RTC_H__
 
-#include <hokuyo_aist/hokuyo_aist.h>
+#include <hokuyoaist/hokuyoaist.h>
 #include <rtm/Manager.h>
 #include <rtm/DataFlowComponentBase.h>
 #include <rtm/OutPort.h>
@@ -30,12 +30,12 @@
 using namespace RTC;
 
 
-class RTC_HokuyoAist
+class RTCHokuyoAIST
 : public RTC::DataFlowComponentBase
 {
     public:
-        RTC_HokuyoAist(RTC::Manager* manager);
-        ~RTC_HokuyoAist();
+        RTCHokuyoAIST(RTC::Manager* manager);
+        ~RTCHokuyoAIST();
 
         virtual RTC::ReturnCode_t onInitialize();
         virtual RTC::ReturnCode_t onActivated(RTC::UniqueId ec_id);
@@ -71,8 +71,8 @@ class RTC_HokuyoAist
         time_t error_time_;
         double x_, y_, z_, roll_, pitch_, yaw_;
 
-        hokuyo_aist::Sensor laser_;
-        hokuyo_aist::ScanData scan_data_;
+        hokuyoaist::Sensor laser_;
+        hokuyoaist::ScanData scan_data_;
         RTC::RangerGeometry sensor_geom_;
         RTC::RangerConfig sensor_config_;
 

@@ -14,8 +14,8 @@
  */
 
 
-#include "comp/hokuyoaist_impl.h"
-#include "comp/rtc.h"
+#include <rtchokuyoaist/hokuyoaist_impl.h>
+#include <rtchokuyoaist/rtc.h>
 
 using namespace RTCHokuyoAist;
 

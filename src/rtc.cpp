@@ -14,12 +14,12 @@
  */
 
 
-#include "rtc.h"
+#include <rtchokuyoaist/rtc.h>
 
 #include <flexiport/flexiport.h>
 
 
-RTC_HokuyoAist::RTC_HokuyoAist(RTC::Manager* manager)
+RTCHokuyoAIST::RTCHokuyoAIST(RTC::Manager* manager)
     : RTC::DataFlowComponentBase(manager),
     ranges_port_("ranges", ranges_),
     intensities_port_("intensities", intensities_),
@@ -35,12 +35,12 @@ RTC_HokuyoAist::RTC_HokuyoAist(RTC::Manager* manager)
 }
 
 
-RTC_HokuyoAist::~RTC_HokuyoAist()
+RTCHokuyoAIST::~RTCHokuyoAIST()
 {
 }
 
 
-RTC::ReturnCode_t RTC_HokuyoAist::onInitialize()
+RTC::ReturnCode_t RTCHokuyoAIST::onInitialize()
 {
     bindParameter("port_opts", port_opts_,
             "type=serial,device=/dev/ttyACM0,timeout=1");
@@ -73,14 +73,14 @@ RTC::ReturnCode_t RTC_HokuyoAist::onInitialize()
 }
 
 
-RTC::ReturnCode_t RTC_HokuyoAist::onActivated(RTC::UniqueId ec_id)
+RTC::ReturnCode_t RTCHokuyoAIST::onActivated(RTC::UniqueId ec_id)
 {
     coil::Guard<coil::Mutex> guard(mutex_);
     try
     {
         open_laser();
     }
-    catch(hokuyo_aist::BaseError &e)
+    catch(hokuyoaist::BaseError &e)
     {
         std::cerr << "Error setting up laser: " << e.what() << '\n';
         return RTC::RTC_ERROR;
@@ -97,7 +97,7 @@ RTC::ReturnCode_t RTC_HokuyoAist::onActivated(RTC::UniqueId ec_id)
 }
 
 
-RTC::ReturnCode_t RTC_HokuyoAist::onDeactivated(RTC::UniqueId ec_id)
+RTC::ReturnCode_t RTCHokuyoAIST::onDeactivated(RTC::UniqueId ec_id)
 {
     coil::Guard<coil::Mutex> guard(mutex_);
 
@@ -105,7 +105,7 @@ RTC::ReturnCode_t RTC_HokuyoAist::onDeactivated(RTC::UniqueId ec_id)
     {
         close_laser();
     }
-    catch(hokuyo_aist::BaseError &e)
+    catch(hokuyoaist::BaseError &e)
     {
         std::cerr << "Error shutting down laser: " << e.what() << '\n';
         return RTC::RTC_ERROR;
@@ -115,7 +115,7 @@ RTC::ReturnCode_t RTC_HokuyoAist::onDeactivated(RTC::UniqueId ec_id)
 }
 
 
-RTC::ReturnCode_t RTC_HokuyoAist::onExecute(RTC::UniqueId ec_id)
+RTC::ReturnCode_t RTCHokuyoAIST::onExecute(RTC::UniqueId ec_id)
 {
     coil::Guard<coil::Mutex> guard(mutex_);
     try
@@ -125,7 +125,7 @@ RTC::ReturnCode_t RTC_HokuyoAist::onExecute(RTC::UniqueId ec_id)
             get_scan();
         }
     }
-    catch(hokuyo_aist::BaseError &e)
+    catch(hokuyoaist::BaseError &e)
     {
         std::cerr << "Error getting laser scan: " << e.what() << '\n';
         time_t now = time(NULL);
@@ -142,7 +142,7 @@ RTC::ReturnCode_t RTC_HokuyoAist::onExecute(RTC::UniqueId ec_id)
                 std::cerr << "Attempting to reset laser.\n";
                 reset_laser();
             }
-            catch(hokuyo_aist::BaseError &e)
+            catch(hokuyoaist::BaseError &e)
             {
                 std::cerr << "Reset failed: " << e.what() << '\n';
                 return RTC::RTC_ERROR;
@@ -158,21 +158,21 @@ RTC::ReturnCode_t RTC_HokuyoAist::onExecute(RTC::UniqueId ec_id)
 }
 
 
-void RTC_HokuyoAist::set_power(bool enable)
+void RTCHokuyoAIST::set_power(bool enable)
 {
     coil::Guard<coil::Mutex> guard(mutex_);
     laser_.set_power(enable);
 }
 
 
-void RTC_HokuyoAist::enable_intensity_data(bool enable)
+void RTCHokuyoAIST::enable_intensity_data(bool enable)
 {
     coil::Guard<coil::Mutex> guard(mutex_);
     enable_intns_ = enable;
 }
 
 
-void RTC_HokuyoAist::set_config(RTC::RangerConfig const& config)
+void RTCHokuyoAIST::set_config(RTC::RangerConfig const& config)
 {
     coil::Guard<coil::Mutex> guard(mutex_);
 
@@ -185,18 +185,18 @@ void RTC_HokuyoAist::set_config(RTC::RangerConfig const& config)
 }
 
 
-void RTC_HokuyoAist::request_scan()
+void RTCHokuyoAIST::request_scan()
 {
     coil::Guard<coil::Mutex> guard(mutex_);
     get_scan();
 }
 
 
-void RTC_HokuyoAist::open_laser()
+void RTCHokuyoAIST::open_laser()
 {
     laser_.open(port_opts_);
 
-    hokuyo_aist::SensorInfo info;
+    hokuyoaist::SensorInfo info;
     laser_.get_sensor_info(info);
     if(start_angle_ == 0.0)
     {
@@ -225,7 +225,7 @@ void RTC_HokuyoAist::open_laser()
     {
         laser_.set_high_sensitivity(high_sens_);
     }
-    catch(hokuyo_aist::ResponseError &e)
+    catch(hokuyoaist::ResponseError &e)
     {
         if(e.desc_code() != 30)
         {
@@ -247,7 +247,7 @@ void RTC_HokuyoAist::open_laser()
 }
 
 
-void RTC_HokuyoAist::close_laser()
+void RTCHokuyoAIST::close_laser()
 {
     laser_.set_power(false);
     laser_.close();
@@ -255,7 +255,7 @@ void RTC_HokuyoAist::close_laser()
 }
 
 
-void RTC_HokuyoAist::reset_laser()
+void RTCHokuyoAIST::reset_laser()
 {
     laser_.reset();
     close_laser();
@@ -263,7 +263,7 @@ void RTC_HokuyoAist::reset_laser()
 }
 
 
-void RTC_HokuyoAist::get_scan()
+void RTCHokuyoAIST::get_scan()
 {
     if(start_angle_ == 0.0 and end_angle_ == 0.0)
     {
@@ -328,7 +328,7 @@ void RTC_HokuyoAist::get_scan()
 }
 
 
-void RTC_HokuyoAist::write_scan()
+void RTCHokuyoAIST::write_scan()
 {
     ranges_.tm.sec = scan_data_.system_time_stamp() / 1000000000;
     ranges_.tm.nsec = scan_data_.system_time_stamp() % 1000000000;
@@ -363,8 +363,8 @@ void RTC_HokuyoAist::write_scan()
 
 static const char* spec[] =
 {
-    "implementation_id", "RTC_HokuyoAist",
-    "type_name",         "RTC_HokuyoAist",
+    "implementation_id", "RTCHokuyoAIST",
+    "type_name",         "RTCHokuyoAIST",
     "description",       "Hokuyo laser scanner component.",
     "version",           "1.0",
     "vendor",            "Geoffrey Biggs, AIST",
@@ -388,8 +388,8 @@ extern "C"
     void rtc_init(RTC::Manager* manager)
     {
         coil::Properties profile(spec);
-        manager->registerFactory(profile, RTC::Create<RTC_HokuyoAist>,
-                RTC::Delete<RTC_HokuyoAist>);
+        manager->registerFactory(profile, RTC::Create<RTCHokuyoAIST>,
+                RTC::Delete<RTCHokuyoAIST>);
     }
 };
 

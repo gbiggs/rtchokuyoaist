@@ -18,7 +18,7 @@
 
 #include "idl/ranger.hh"
 
-class RTC_HokuyoAist;
+class RTCHokuyoAIST;
 
 namespace RTCHokuyoAist
 {
@@ -31,7 +31,7 @@ class RangerProvider
         RangerProvider();
         virtual ~RangerProvider();
 
-        void setup(RTC_HokuyoAist* owner) { owner_ = owner; }
+        void setup(RTCHokuyoAIST* owner) { owner_ = owner; }
 
         RTC::RangerGeometry* GetGeometry() throw (CORBA::SystemException);
         void Power(bool enable) throw (CORBA::SystemException);
@@ -41,7 +41,7 @@ class RangerProvider
             throw (CORBA::SystemException);
 
     private:
-        RTC_HokuyoAist* owner_;
+        RTCHokuyoAIST* owner_;
 }; // class RangerProvider
 
 }; // namespace RTCHokuyoAist

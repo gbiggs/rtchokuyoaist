@@ -14,22 +14,22 @@
  */
 
 
+#include <rtchokuyoaist/rtc.h>
+
 #include <iostream>
 #include <rtm/Manager.h>
 #include <string>
 #include <stdlib.h>
 
-#include "rtc.h"
-
 void ModuleInit(RTC::Manager* manager)
 {
     rtc_init(manager);
     RTC::RtcBase* comp;
-    comp = manager->createComponent("RTC_HokuyoAist");
+    comp = manager->createComponent("RTCHokuyoAIST");
 
     if (comp == NULL)
     {
-        std::cerr << "RTC_HokuyoAist component creation failed." << std::endl;
+        std::cerr << "RTCHokuyoAIST component creation failed." << std::endl;
         abort();
     }
 }
