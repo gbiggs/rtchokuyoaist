@@ -2,6 +2,10 @@ RTC:HokuyoAist
 
 RT-Component for Hokuyo laser scanners.
 
-See doc/manual.pdf or doc/manual.tex for installation and usage
-instructions.
+Documentation is available online at http://gbiggs.github.com/rtchokuyoaist/
+
+This software is developed at the National Institute of Advanced
+Industrial Science and Technology. Approval number H23PRO-????. This
+software is licensed under the Lesser General Public License. See
+COPYING.LESSER.
 
