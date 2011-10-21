@@ -33,7 +33,9 @@ set(SHARE_INSTALL_DIR
     "share/${PROJECT_NAME_LOWER}-${PROJECT_VERSION_MAJOR}")
 
 # Get necessary dependency information
-list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/Modules)
+if(NOT WIN32)
+    list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/Modules)
+endif(NOT WIN32)
 find_package(OpenRTM 1 REQUIRED)
 find_package(HokuyoAIST 3 REQUIRED)
 

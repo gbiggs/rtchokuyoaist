@@ -41,7 +41,7 @@ RTCHokuyoAIST::RTCHokuyoAIST(RTC::Manager* manager)
     port_opts_("type=serial,device=/dev/ttyACM0,timeout=1"),
     start_angle_(0.0), end_angle_(0.0), cluster_count_(1),
     enable_intns_(false), high_sens_(false), pull_mode_(false),
-    new_data_mode_(false), error_time_(5),
+    new_data_mode_(false), verbose_(false), error_time_(5),
     x_(0.0), y_(0.0), z_(0.0), roll_(0.0), pitch_(0.0), yaw_(0.0),
     base_ang_res_(0.0), last_error_time_(0)
 {
@@ -64,6 +64,7 @@ RTC::ReturnCode_t RTCHokuyoAIST::onInitialize()
     bindParameter("high_sensitivity", high_sens_, "0");
     bindParameter("pull_mode", pull_mode_, "0");
     bindParameter("new_data_mode", new_data_mode_, "0");
+    bindParameter("verbose", verbose_, "0");
     bindParameter("error_time", error_time_, "5");
 
     bindParameter("x", x_, "0.0");
@@ -89,6 +90,7 @@ RTC::ReturnCode_t RTCHokuyoAIST::onInitialize()
 RTC::ReturnCode_t RTCHokuyoAIST::onActivated(RTC::UniqueId ec_id)
 {
     coil::Guard<coil::Mutex> guard(mutex_);
+    laser_.set_verbose(verbose_);
     try
     {
         open_laser();
@@ -278,7 +280,7 @@ void RTCHokuyoAIST::reset_laser()
 
 void RTCHokuyoAIST::get_scan()
 {
-    if(start_angle_ == 0.0 and end_angle_ == 0.0)
+    if(start_angle_ == 0.0 && end_angle_ == 0.0)
     {
         // Get a full scan
         if(new_data_mode_)
@@ -389,10 +391,41 @@ static const char* spec[] =
     "lang_type",         "compile",
     // Configuration variables
     "conf.default.port_opts", "type=serial,device=/dev/ttyACM0,timeout=1",
+    "conf.default.start_angle", "0.0",
+    "conf.default.end_angle", "0.0",
+    "conf.default.cluster_count", "1",
+    "conf.default.enable_intensity", "0",
+    "conf.default.high_sensitivity", "0",
+    "conf.default.pull_mode", "0",
+    "conf.default.new_data_mode", "0",
+    "conf.default.verbose", "0",
+    "conf.default.error_time", "5",
+    "conf.default.x", "0.0",
+    "conf.default.y", "0.0",
+    "conf.default.z", "0.0",
+    "conf.default.roll", "0.0",
+    "conf.default.pitch", "0.0",
+    "conf.default.yaw", "0.0",
     // Widget
     "conf.__widget__.port_opts", "text",
-    //"conf.__widget__.", "spin",
+    "conf.__widget__.start_angle", "spin",
+    "conf.__widget__.end_angle", "spin",
+    "conf.__widget__.cluster_count", "spin",
+    "conf.__widget__.enable_intensity", "radio",
+    "conf.__widget__.high_sensitivity", "radio",
+    "conf.__widget__.pull_mode", "radio",
+    "conf.__widget__.new_data_mode", "radio",
+    "conf.__widget__.verbose", "radio",
+    "conf.__widget__.error_time", "spin",
+    "conf.__widget__.x", "spin",
+    "conf.__widget__.y", "spin",
+    "conf.__widget__.z", "spin",
+    "conf.__widget__.roll", "spin",
+    "conf.__widget__.pitch", "spin",
+    "conf.__widget__.yaw", "spin",
     // Constraints
+    "conf.__constraints__.cluster_count", "1<=x",
+    "conf.__constraints__.error_time", "0<=x",
     ""
 };
 

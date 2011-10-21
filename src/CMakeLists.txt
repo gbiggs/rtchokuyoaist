@@ -6,7 +6,7 @@ set(standalone_srcs standalone.cpp)
 include_directories(${PROJECT_SOURCE_DIR}/include)
 include_directories(${PROJECT_BINARY_DIR})
 include_directories(${HokuyoAIST_INCLUDE_DIRS} ${OPENRTM_INCLUDE_DIRS})
-add_definitions(${HokuyoAIST_DEFINITIONS} ${OPENRTM_DEFINITIONS})
+add_definitions(${HokuyoAIST_DEFINITIONS} ${OPENRTM_CFLAGS})
 
 add_library(${PROJECT_NAME_LOWER} ${LIB_TYPE} ${comp_srcs} ${ALL_IDL_SRCS})
 set_source_files_properties(${ALL_IDL_SRCS} PROPERTIES GENERATED 1)

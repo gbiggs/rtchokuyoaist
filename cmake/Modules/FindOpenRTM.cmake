@@ -8,7 +8,7 @@
 # OPENRTM_FOUND - True if OpenRTM-aist was found.
 # OPENRTM_INCLUDE_DIRS - Directories containing the OpenRTM-aist include files.
 # OPENRTM_LIBRARIES - Libraries needed to use OpenRTM-aist.
-# OPENRTM_DEFINITIONS - Compiler flags for OpenRTM-aist.
+# OPENRTM_CFLAGS - Compiler flags for OpenRTM-aist.
 # OPENRTM_VERSION - The version of OpenRTM-aist found.
 # OPENRTM_VERSION_MAJOR - The major version of OpenRTM-aist found.
 # OPENRTM_VERSION_MINOR - The minor version of OpenRTM-aist found.
@@ -44,7 +44,7 @@ find_library(COIL_LIBRARY coil
     HINTS ${OPENRTM_ROOT}/lib $ENV{OPENRTM_ROOT}/lib
     ${PC_COIL_LIBRARY_DIRS})
 
-set(OPENRTM_DEFINITIONS ${PC_OPENRTM_CFLAGS_OTHER} ${PC_COIL_CFLAGS_OTHER})
+set(OPENRTM_CFLAGS ${PC_OPENRTM_CFLAGS_OTHER} ${PC_COIL_CFLAGS_OTHER})
 set(OPENRTM_INCLUDE_DIRS ${OPENRTM_INCLUDE_DIR} ${OPENRTM_INCLUDE_DIR}/rtm/idl
     ${COIL_INCLUDE_DIR})
 set(OPENRTM_LIBRARIES ${OPENRTM_LIBRARY} ${COIL_LIBRARY} uuid dl pthread

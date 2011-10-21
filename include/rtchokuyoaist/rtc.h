@@ -81,6 +81,7 @@ class RTCHokuyoAIST
         bool high_sens_;
         bool pull_mode_;
         bool new_data_mode_;
+        bool verbose_;
         time_t error_time_;
         double x_, y_, z_, roll_, pitch_, yaw_;
 
