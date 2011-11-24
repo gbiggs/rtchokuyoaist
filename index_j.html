@@ -96,11 +96,11 @@ URG-04LX（Classic-URG）、 UGH-08LX（Hi-URG）、UTM-30LX（Top-URG）、UXM-
 <p>ソースを使う場合は以下の手順でインストールしてください。</p>
 <ul>
 <li><p class="first">ソースをダウンロードして解凍してください:</p>
-<div class="highlight-python"><pre>tar -xvzf rtchokuyoaist-2.0.0.tar.gz</pre>
+<div class="highlight-python"><pre>tar -xvzf rtchokuyoaist-3.0.0.tar.gz</pre>
 </div>
 </li>
 <li><p class="first">解凍されたフォルダに入ってください:</p>
-<div class="highlight-python"><pre>cd rtchokuyoaist-2.0.0</pre>
+<div class="highlight-python"><pre>cd rtchokuyoaist-3.0.0</pre>
 </div>
 </li>
 <li><p class="first"><tt class="docutils literal"><span class="pre">build</span></tt> フォルダを作ってください:</p>
@@ -122,14 +122,13 @@ URG-04LX（Classic-URG）、 UGH-08LX（Hi-URG）、UTM-30LX（Top-URG）、UXM-
 </li>
 <li><p class="first"><tt class="docutils literal"><span class="pre">make</span> <span class="pre">install</span></tt> でコンポーネントをインストールしてください。選択された
 インストール場所に書き込み権限があるかを確認してください:</p>
-<div class="highlight-python"><pre>``make install``</pre>
+<div class="highlight-python"><pre>make install</pre>
 </div>
 </li>
 <li><p class="first">インストールする場所はccmakeを実行して <tt class="docutils literal"><span class="pre">CMAKE_INSTALL_PREFIX</span></tt> を
-設定することで変更が可能です。</p>
-<blockquote>
-<div><p>ccmake ../</p>
-</div></blockquote>
+設定することで変更が可能です:</p>
+<div class="highlight-python"><pre>ccmake ../</pre>
+</div>
 </li>
 </ul>
 <p>ここまでで、コンポーネントが使えるようになりました。コンフィグレーションは次のセクションを

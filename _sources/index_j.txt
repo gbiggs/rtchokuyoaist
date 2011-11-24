@@ -76,11 +76,11 @@ RTC:HokuyoAISTは ``rtchokuyoaist_standalone`` の実行をダブルクリック
 
 - ソースをダウンロードして解凍してください::
 
-    tar -xvzf rtchokuyoaist-2.0.0.tar.gz
+    tar -xvzf rtchokuyoaist-3.0.0.tar.gz
 
 - 解凍されたフォルダに入ってください::
 
-    cd rtchokuyoaist-2.0.0
+    cd rtchokuyoaist-3.0.0
 
 - ``build`` フォルダを作ってください::
 
@@ -101,10 +101,10 @@ RTC:HokuyoAISTは ``rtchokuyoaist_standalone`` の実行をダブルクリック
 - ``make install`` でコンポーネントをインストールしてください。選択された
   インストール場所に書き込み権限があるかを確認してください::
 
-  ``make install``
+    make install
 
 - インストールする場所はccmakeを実行して ``CMAKE_INSTALL_PREFIX`` を
-  設定することで変更が可能です。
+  設定することで変更が可能です::
 
     ccmake ../
 

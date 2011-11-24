@@ -341,6 +341,16 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>verbose_</Name>
+      <APILanguage>cpp</APILanguage>
+      <Type>data</Type>
+      <Scope>RTCHokuyoAIST</Scope>
+    </TokenIdentifier>
+    <Path>class_r_t_c_hokuyo_a_i_s_t.html</Path>
+    <Anchor>ab954d4280909b12159a7efbd60f9de1b</Anchor>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>error_time_</Name>
       <APILanguage>cpp</APILanguage>
       <Type>data</Type>

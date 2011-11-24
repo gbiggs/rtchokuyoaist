@@ -68,56 +68,69 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <h1>ranger_impl.h</h1>  </div>
 </div>
 <div class="contents">
-<a href="ranger__impl_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/* RTC:HokuyoAist</span>
+<a href="ranger__impl_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/* RTC:HokuyoAIST</span>
 <a name="l00002"></a>00002 <span class="comment"> *</span>
-<a name="l00003"></a>00003 <span class="comment"> * Copyright (C) 2010</span>
-<a name="l00004"></a>00004 <span class="comment"> *     Geoffrey Biggs</span>
-<a name="l00005"></a>00005 <span class="comment"> *     RT-Synthesis Research Group</span>
-<a name="l00006"></a>00006 <span class="comment"> *     Intelligent Systems Research Institute,</span>
-<a name="l00007"></a>00007 <span class="comment"> *     National Institute of Advanced Industrial Science and Technology (AIST),</span>
-<a name="l00008"></a>00008 <span class="comment"> *     Japan</span>
-<a name="l00009"></a>00009 <span class="comment"> *     All rights reserved.</span>
-<a name="l00010"></a>00010 <span class="comment"> * Licensed under the Eclipse Public License -v 1.0 (EPL)</span>
-<a name="l00011"></a>00011 <span class="comment"> * http://www.opensource.org/licenses/eclipse-1.0.txt</span>
-<a name="l00012"></a>00012 <span class="comment"> *</span>
-<a name="l00013"></a>00013 <span class="comment"> * Service implementation class.</span>
-<a name="l00014"></a>00014 <span class="comment"> */</span>
-<a name="l00015"></a>00015 
-<a name="l00016"></a>00016 <span class="preprocessor">#if !defined(RANGER_IMPL__)</span>
-<a name="l00017"></a>00017 <span class="preprocessor"></span><span class="preprocessor">#define RANGER_IMPL__</span>
-<a name="l00018"></a>00018 <span class="preprocessor"></span>
-<a name="l00019"></a>00019 <span class="preprocessor">#include &quot;idl/ranger.hh&quot;</span>
-<a name="l00020"></a>00020 
-<a name="l00021"></a>00021 <span class="keyword">class </span><a class="code" href="class_r_t_c_hokuyo_a_i_s_t.html">RTCHokuyoAIST</a>;
-<a name="l00022"></a>00022 
-<a name="l00023"></a>00023 <span class="keyword">namespace </span>RTCHokuyoAist
-<a name="l00024"></a>00024 {
-<a name="l00025"></a>00025 
-<a name="l00026"></a><a class="code" href="class_r_t_c_hokuyo_aist_1_1_ranger_provider.html">00026</a> <span class="keyword">class </span><a class="code" href="class_r_t_c_hokuyo_aist_1_1_ranger_provider.html">RangerProvider</a>
-<a name="l00027"></a>00027     : <span class="keyword">public</span> <span class="keyword">virtual</span> POA_RTC::Ranger,
-<a name="l00028"></a>00028     <span class="keyword">public</span> <span class="keyword">virtual</span> PortableServer::RefCountServantBase
-<a name="l00029"></a>00029 {
-<a name="l00030"></a>00030     <span class="keyword">public</span>:
-<a name="l00031"></a>00031         <a class="code" href="class_r_t_c_hokuyo_aist_1_1_ranger_provider.html#a6ccc94b3ea1b42b20c1d30fb4113f167">RangerProvider</a>();
-<a name="l00032"></a>00032         <span class="keyword">virtual</span> <a class="code" href="class_r_t_c_hokuyo_aist_1_1_ranger_provider.html#ae425b9d757a101d4fab0c18c79efd8f9">~RangerProvider</a>();
+<a name="l00003"></a>00003 <span class="comment"> * Header file for the Ranger interface implementation.</span>
+<a name="l00004"></a>00004 <span class="comment"> *</span>
+<a name="l00005"></a>00005 <span class="comment"> * Copyright 2010-2011 Geoffrey Biggs geoffrey.biggs@aist.go.jp</span>
+<a name="l00006"></a>00006 <span class="comment"> *     RT-Synthesis Research Group</span>
+<a name="l00007"></a>00007 <span class="comment"> *     Intelligent Systems Research Institute,</span>
+<a name="l00008"></a>00008 <span class="comment"> *     National Institute of Advanced Industrial Science and Technology (AIST),</span>
+<a name="l00009"></a>00009 <span class="comment"> *     Japan</span>
+<a name="l00010"></a>00010 <span class="comment"> *     All rights reserved.</span>
+<a name="l00011"></a>00011 <span class="comment"> *</span>
+<a name="l00012"></a>00012 <span class="comment"> * This file is part of HokuyoAIST.</span>
+<a name="l00013"></a>00013 <span class="comment"> *</span>
+<a name="l00014"></a>00014 <span class="comment"> * HokuyoAIST is free software; you can redistribute it and/or modify it</span>
+<a name="l00015"></a>00015 <span class="comment"> * under the terms of the GNU Lesser General Public License as published</span>
+<a name="l00016"></a>00016 <span class="comment"> * by the Free Software Foundation; either version 2.1 of the License,</span>
+<a name="l00017"></a>00017 <span class="comment"> * or (at your option) any later version.</span>
+<a name="l00018"></a>00018 <span class="comment"> *</span>
+<a name="l00019"></a>00019 <span class="comment"> * HokuyoAIST is distributed in the hope that it will be useful, but</span>
+<a name="l00020"></a>00020 <span class="comment"> * WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<a name="l00021"></a>00021 <span class="comment"> * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU</span>
+<a name="l00022"></a>00022 <span class="comment"> * Lesser General Public License for more details.</span>
+<a name="l00023"></a>00023 <span class="comment"> *</span>
+<a name="l00024"></a>00024 <span class="comment"> * You should have received a copy of the GNU Lesser General Public</span>
+<a name="l00025"></a>00025 <span class="comment"> * License along with HokuyoAIST. If not, see</span>
+<a name="l00026"></a>00026 <span class="comment"> * &lt;http://www.gnu.org/licenses/&gt;.</span>
+<a name="l00027"></a>00027 <span class="comment"> */</span>
+<a name="l00028"></a>00028 
+<a name="l00029"></a>00029 <span class="preprocessor">#if !defined(RANGER_IMPL__)</span>
+<a name="l00030"></a>00030 <span class="preprocessor"></span><span class="preprocessor">#define RANGER_IMPL__</span>
+<a name="l00031"></a>00031 <span class="preprocessor"></span>
+<a name="l00032"></a>00032 <span class="preprocessor">#include &quot;idl/ranger.hh&quot;</span>
 <a name="l00033"></a>00033 
-<a name="l00034"></a><a class="code" href="class_r_t_c_hokuyo_aist_1_1_ranger_provider.html#a24d490bf83bea533b3978c4fccec2f74">00034</a>         <span class="keywordtype">void</span> <a class="code" href="class_r_t_c_hokuyo_aist_1_1_ranger_provider.html#a24d490bf83bea533b3978c4fccec2f74">setup</a>(<a class="code" href="class_r_t_c_hokuyo_a_i_s_t.html">RTCHokuyoAIST</a>* owner) { owner_ = owner; }
+<a name="l00034"></a>00034 <span class="keyword">class </span><a class="code" href="class_r_t_c_hokuyo_a_i_s_t.html">RTCHokuyoAIST</a>;
 <a name="l00035"></a>00035 
-<a name="l00036"></a>00036         RTC::RangerGeometry* <a class="code" href="class_r_t_c_hokuyo_aist_1_1_ranger_provider.html#a0da303a4f69c615ae2cb4e00c8c1648a">GetGeometry</a>() throw (CORBA::SystemException);
-<a name="l00037"></a>00037         <span class="keywordtype">void</span> <a class="code" href="class_r_t_c_hokuyo_aist_1_1_ranger_provider.html#a7c41108d6b3a747b03e28a317810f156">Power</a>(<span class="keywordtype">bool</span> enable) throw (CORBA::SystemException);
-<a name="l00038"></a>00038         <span class="keywordtype">void</span> <a class="code" href="class_r_t_c_hokuyo_aist_1_1_ranger_provider.html#af3b7b9718ffc60f5bb4a8168286e96cb">EnableIntensities</a>(<span class="keywordtype">bool</span> enable) throw (CORBA::SystemException);
-<a name="l00039"></a>00039         RTC::RangerConfig <a class="code" href="class_r_t_c_hokuyo_aist_1_1_ranger_provider.html#ae24bd05469f1da57cb2629899f879ea4">GetConfig</a>() throw (CORBA::SystemException);
-<a name="l00040"></a>00040         <span class="keywordtype">void</span> <a class="code" href="class_r_t_c_hokuyo_aist_1_1_ranger_provider.html#a75920fc2f451844373bfa441eb862bb6">SetConfig</a>(RTC::RangerConfig const&amp; new_config)
-<a name="l00041"></a>00041             throw (CORBA::SystemException);
-<a name="l00042"></a>00042 
-<a name="l00043"></a>00043     private:
-<a name="l00044"></a>00044         <a class="code" href="class_r_t_c_hokuyo_a_i_s_t.html">RTCHokuyoAIST</a>* owner_;
-<a name="l00045"></a>00045 }; <span class="comment">// class RangerProvider</span>
+<a name="l00036"></a>00036 <span class="keyword">namespace </span>RTCHokuyoAist
+<a name="l00037"></a>00037 {
+<a name="l00038"></a>00038 
+<a name="l00039"></a><a class="code" href="class_r_t_c_hokuyo_aist_1_1_ranger_provider.html">00039</a> <span class="keyword">class </span><a class="code" href="class_r_t_c_hokuyo_aist_1_1_ranger_provider.html">RangerProvider</a>
+<a name="l00040"></a>00040     : <span class="keyword">public</span> <span class="keyword">virtual</span> POA_RTC::Ranger,
+<a name="l00041"></a>00041     <span class="keyword">public</span> <span class="keyword">virtual</span> PortableServer::RefCountServantBase
+<a name="l00042"></a>00042 {
+<a name="l00043"></a>00043     <span class="keyword">public</span>:
+<a name="l00044"></a>00044         <a class="code" href="class_r_t_c_hokuyo_aist_1_1_ranger_provider.html#a6ccc94b3ea1b42b20c1d30fb4113f167">RangerProvider</a>();
+<a name="l00045"></a>00045         <span class="keyword">virtual</span> <a class="code" href="class_r_t_c_hokuyo_aist_1_1_ranger_provider.html#ae425b9d757a101d4fab0c18c79efd8f9">~RangerProvider</a>();
 <a name="l00046"></a>00046 
-<a name="l00047"></a>00047 }; <span class="comment">// namespace RTCHokuyoAist</span>
+<a name="l00047"></a><a class="code" href="class_r_t_c_hokuyo_aist_1_1_ranger_provider.html#a24d490bf83bea533b3978c4fccec2f74">00047</a>         <span class="keywordtype">void</span> <a class="code" href="class_r_t_c_hokuyo_aist_1_1_ranger_provider.html#a24d490bf83bea533b3978c4fccec2f74">setup</a>(<a class="code" href="class_r_t_c_hokuyo_a_i_s_t.html">RTCHokuyoAIST</a>* owner) { owner_ = owner; }
 <a name="l00048"></a>00048 
-<a name="l00049"></a>00049 <span class="preprocessor">#endif // RANGER_IMPL__</span>
-<a name="l00050"></a>00050 <span class="preprocessor"></span>
+<a name="l00049"></a>00049         RTC::RangerGeometry* <a class="code" href="class_r_t_c_hokuyo_aist_1_1_ranger_provider.html#a0da303a4f69c615ae2cb4e00c8c1648a">GetGeometry</a>() throw (CORBA::SystemException);
+<a name="l00050"></a>00050         <span class="keywordtype">void</span> <a class="code" href="class_r_t_c_hokuyo_aist_1_1_ranger_provider.html#a7c41108d6b3a747b03e28a317810f156">Power</a>(<span class="keywordtype">bool</span> enable) throw (CORBA::SystemException);
+<a name="l00051"></a>00051         <span class="keywordtype">void</span> <a class="code" href="class_r_t_c_hokuyo_aist_1_1_ranger_provider.html#af3b7b9718ffc60f5bb4a8168286e96cb">EnableIntensities</a>(<span class="keywordtype">bool</span> enable) throw (CORBA::SystemException);
+<a name="l00052"></a>00052         RTC::RangerConfig <a class="code" href="class_r_t_c_hokuyo_aist_1_1_ranger_provider.html#ae24bd05469f1da57cb2629899f879ea4">GetConfig</a>() throw (CORBA::SystemException);
+<a name="l00053"></a>00053         <span class="keywordtype">void</span> <a class="code" href="class_r_t_c_hokuyo_aist_1_1_ranger_provider.html#a75920fc2f451844373bfa441eb862bb6">SetConfig</a>(RTC::RangerConfig const&amp; new_config)
+<a name="l00054"></a>00054             throw (CORBA::SystemException);
+<a name="l00055"></a>00055 
+<a name="l00056"></a>00056     private:
+<a name="l00057"></a>00057         <a class="code" href="class_r_t_c_hokuyo_a_i_s_t.html">RTCHokuyoAIST</a>* owner_;
+<a name="l00058"></a>00058 }; <span class="comment">// class RangerProvider</span>
+<a name="l00059"></a>00059 
+<a name="l00060"></a>00060 }; <span class="comment">// namespace RTCHokuyoAist</span>
+<a name="l00061"></a>00061 
+<a name="l00062"></a>00062 <span class="preprocessor">#endif // RANGER_IMPL__</span>
+<a name="l00063"></a>00063 <span class="preprocessor"></span>
 </pre></div></div>
 </div>
 <!--- window showing the filter options -->
@@ -134,7 +147,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Thu Aug 11 2011 18:21:17 for RTCHokuyoAist by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Thu Nov 24 2011 16:08:39 for RTCHokuyoAist by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>
