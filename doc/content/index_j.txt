@@ -101,12 +101,12 @@ RTC:HokuyoAISTは ``rtchokuyoaist_standalone`` の実行をダブルクリック
 - ``make install`` でコンポーネントをインストールしてください。選択された
   インストール場所に書き込み権限があるかを確認してください::
 
-  make install
+    make install
 
 - インストールする場所はccmakeを実行して ``CMAKE_INSTALL_PREFIX`` を
   設定することで変更が可能です::
 
-  ccmake ../
+    ccmake ../
 
 ここまでで、コンポーネントが使えるようになりました。コンフィグレーションは次のセクションを
 参照してください。

@@ -85,11 +85,11 @@ system:
 - Download the source, either from the repository or a source archive,
   and extract it somewhere::
 
-    tar -xvzf rtc_hokuyoaist-2.0.0.tar.gz
+    tar -xvzf rtc_hokuyoaist-3.0.0.tar.gz
 
 - Change to the directory containing the extracted source::
 
-    cd rtc_hokuyoaist-2.0.0
+    cd rtc_hokuyoaist-3.0.0
 
 - Create a directory called ``build``::
 
