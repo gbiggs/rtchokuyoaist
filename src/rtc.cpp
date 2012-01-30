@@ -41,7 +41,8 @@ RTCHokuyoAIST::RTCHokuyoAIST(RTC::Manager* manager)
     port_opts_("type=serial,device=/dev/ttyACM0,timeout=1"),
     start_angle_(0.0), end_angle_(0.0), cluster_count_(1),
     enable_intns_(false), high_sens_(false), pull_mode_(false),
-    new_data_mode_(false), verbose_(false), error_time_(5),
+    new_data_mode_(false), calibrate_time_(true), verbose_(false),
+    error_time_(5),
     x_(0.0), y_(0.0), z_(0.0), roll_(0.0), pitch_(0.0), yaw_(0.0),
     base_ang_res_(0.0), last_error_time_(0)
 {
@@ -64,6 +65,7 @@ RTC::ReturnCode_t RTCHokuyoAIST::onInitialize()
     bindParameter("high_sensitivity", high_sens_, "0");
     bindParameter("pull_mode", pull_mode_, "0");
     bindParameter("new_data_mode", new_data_mode_, "0");
+    bindParameter("calibrate_time", calibrate_time_, "1");
     bindParameter("verbose", verbose_, "0");
     bindParameter("error_time", error_time_, "5");
 
@@ -250,7 +252,11 @@ void RTCHokuyoAIST::open_laser()
             "(possibly not supported): " << e.what() << '\n';
     }
 
-    laser_.calibrate_time();
+    if(calibrate_time_)
+    {
+        laser_.calibrate_time();
+    }
+
     if(pull_mode_)
     {
         laser_.set_power(false);
