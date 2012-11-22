@@ -56,6 +56,13 @@ RTC::RangerGeometry* RangerProvider::GetGeometry()
 }
 
 
+void RangerProvider::SetGeometry(RTC::RangerGeometry const& geom)
+    throw(CORBA::SystemException)
+{
+    owner_->set_geometry(geom);
+}
+
+
 void RangerProvider::Power(bool enable)
     throw(CORBA::SystemException)
 {

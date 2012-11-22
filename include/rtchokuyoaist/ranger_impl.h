@@ -47,6 +47,7 @@ class RangerProvider
         void setup(RTCHokuyoAIST* owner) { owner_ = owner; }
 
         RTC::RangerGeometry* GetGeometry() throw (CORBA::SystemException);
+        void SetGeometry(RTC::RangerGeometry const& geom) throw (CORBA::SystemException);
         void Power(bool enable) throw (CORBA::SystemException);
         void EnableIntensities(bool enable) throw (CORBA::SystemException);
         RTC::RangerConfig GetConfig() throw (CORBA::SystemException);

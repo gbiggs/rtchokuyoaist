@@ -28,6 +28,9 @@ interface Ranger
     /// Get the geometry of the device.
     RTC::RangerGeometry GetGeometry();
 
+    /// Set the geometry of the device.
+    void SetGeometry(in RTC::RangerGeometry geom);
+
     /// Turn the ranger device's power on or off.
     void Power(in boolean enable);
 

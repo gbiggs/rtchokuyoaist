@@ -57,6 +57,7 @@ class RTCHokuyoAIST
 
         // Functions used by the services
         RTC::RangerGeometry get_geometry() const { return sensor_geom_; }
+        void set_geometry(RTC::RangerGeometry const& geom);
         void set_power(bool enable);
         void enable_intensity_data(bool enable);
         RTC::RangerConfig get_config() const { return sensor_config_; }

@@ -175,6 +175,18 @@ RTC::ReturnCode_t RTCHokuyoAIST::onExecute(RTC::UniqueId ec_id)
 }
 
 
+void RTCHokuyoAIST::set_geometry(RangerGeometry const& geom)
+{
+    sensor_geom_ = geom;
+    x_ = sensor_geom_.geometry.pose.position.x;
+    y_ = sensor_geom_.geometry.pose.position.y;
+    z_ = sensor_geom_.geometry.pose.position.z;
+    roll_ = sensor_geom_.geometry.pose.orientation.r;
+    pitch_ = sensor_geom_.geometry.pose.orientation.p;
+    yaw_ = sensor_geom_.geometry.pose.orientation.y;
+}
+
+
 void RTCHokuyoAIST::set_power(bool enable)
 {
     coil::Guard<coil::Mutex> guard(mutex_);
